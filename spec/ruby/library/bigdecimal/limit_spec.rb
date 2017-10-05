@@ -30,6 +30,14 @@ describe "BigDecimal.limit" do
 
   it "use the local limit" do
     BigDecimalSpecs.with_limit(3) do
+      (BigDecimal('10') / BigDecimal('3')).to_f.should == 3.33
+    end
+
+    BigDecimalSpecs.with_limit(3) do
+      (BigDecimal('10') / BigDecimal('3')).to_s("F").should == "3.33"
+    end
+
+    BigDecimalSpecs.with_limit(3) do
       (BigDecimal('10') / BigDecimal('3')).should == BigDecimal('0.333')
     end
   end
