@@ -27,4 +27,10 @@ describe "BigDecimal.limit" do
       (BigDecimal('0.888') * BigDecimal('3')).should == BigDecimal('2.7')
     end
   end
+
+  it "use the local limit" do
+    BigDecimalSpecs.with_limit(3) do
+      (BigDecimal('10') / BigDecimal('3')).should == BigDecimal('0.333')
+    end
+  end
 end
